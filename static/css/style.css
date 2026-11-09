@@ -1,0 +1,1499 @@
+
+/* =========================================================
+   RIVOK — LUXURY IMAGE & VIDEO RESIZER
+   Theme: Black Cherry • Blush Pink • Ivory • Butterflies
+========================================================= */
+
+/* -------------------------
+   1. COLOUR PALETTE
+------------------------- */
+
+:root {
+    --bg: #0b070a;
+    --bg-soft: #160b12;
+    --maroon: #651337;
+    --dark-maroon: #3b0c21;
+    --deep-wine: #260b19;
+
+    --pink: #f8eaf0;
+    --soft-pink: #f4dce6;
+    --blush: #fff7fa;
+    --mauve: #a85c7c;
+
+    --text: #351925;
+    --muted: #927985;
+    --white: #fffafd;
+
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    --pink-glow: 0 0 35px rgba(220, 119, 165, 0.25);
+}
+
+/* -------------------------
+   2. GLOBAL RESET
+------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(101, 19, 55, 0.34), transparent 38%),
+        radial-gradient(ellipse at 85% 65%, rgba(111, 32, 70, 0.20), transparent 40%),
+        linear-gradient(145deg, #090609, #160914 55%, #0b070a);
+
+    color: var(--white);
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Elegant ambient background glow */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 650px;
+    height: 650px;
+    top: -260px;
+    left: -180px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(164, 54, 103, 0.20),
+        rgba(101, 19, 55, 0.08) 45%,
+        transparent 72%
+    );
+    filter: blur(35px);
+    pointer-events: none;
+    z-index: 0;
+    animation: ambientGlow 12s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    right: -300px;
+    bottom: -320px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(196, 91, 139, 0.15),
+        transparent 68%
+    );
+    filter: blur(45px);
+    pointer-events: none;
+    z-index: 0;
+    animation: ambientGlow 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ambientGlow {
+    from {
+        transform: scale(0.9);
+        opacity: 0.55;
+    }
+    to {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* Keep website content above decorations */
+
+.nav,
+header,
+main,
+section,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+/* -------------------------
+   3. NAVIGATION BAR
+------------------------- */
+
+.nav {
+    width: min(1180px, calc(100% - 48px));
+    min-height: 76px;
+    margin: 22px auto 0;
+    padding: 14px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    background: rgba(255, 247, 250, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(18px);
+}
+
+.logo,
+.nav-logo {
+    color: var(--maroon);
+    font-family: "Playfair Display", serif;
+    font-size: 29px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a,
+.nav a:not(.logo):not(.nav-logo) {
+    color: #563042;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav a:hover {
+    color: #b34e7b;
+}
+
+/* -------------------------
+   4. HERO SECTION
+------------------------- */
+
+.hero {
+    width: min(1180px, calc(100% - 48px));
+    min-height: 590px;
+    margin: 0 auto;
+    padding: 100px 20px 85px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.eyebrow,
+.hero-label,
+.section-label {
+    margin-bottom: 22px;
+    color: #d99ab5;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.hero h1,
+.hero-title {
+    max-width: 900px;
+    color: var(--white);
+    font-family: "Playfair Display", serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+}
+
+.hero h1 span,
+.hero-title span {
+    color: #e6a9c2;
+    font-style: italic;
+}
+
+.hero p {
+    max-width: 610px;
+    margin-top: 24px;
+    color: #d4bdc8;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* -------------------------
+   5. BUTTONS
+------------------------- */
+
+.btn,
+button,
+.btn-dark,
+.btn-light {
+    min-height: 48px;
+    padding: 13px 27px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border-radius: 999px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.btn-dark,
+button,
+.btn {
+    color: white;
+    background: linear-gradient(135deg, #7a2049, #4b102d);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 25px rgba(101, 19, 55, 0.28);
+}
+
+.btn-light {
+    color: #63213f;
+    background: #fff5f8;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.btn:hover,
+button:hover,
+.btn-dark:hover,
+.btn-light:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(207, 111, 153, 0.28);
+}
+
+.btn-dark.big {
+    width: 100%;
+    min-height: 55px;
+    margin-top: 18px;
+    font-size: 14px;
+}
+
+/* -------------------------
+   6. GENERAL CONTENT SECTIONS
+------------------------- */
+
+section {
+    width: min(1180px, calc(100% - 48px));
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about,
+.how-it-works,
+.features,
+.philosophy {
+    padding-top: 85px;
+    padding-bottom: 85px;
+}
+
+.section-heading,
+.about h2,
+.how-it-works h2,
+.philosophy h2 {
+    color: var(--white);
+    font-family: "Playfair Display", serif;
+    font-size: clamp(34px, 5vw, 54px);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.section-heading span,
+.about h2 span,
+.philosophy h2 span {
+    color: #e4a5be;
+    font-style: italic;
+}
+
+.about p,
+.how-it-works p,
+.philosophy p {
+    color: #cbb5c0;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+/* -------------------------
+   7. FEATURE CARDS
+------------------------- */
+
+.cards,
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 38px;
+}
+
+.feature-card,
+.card {
+    overflow: hidden;
+    border: 1px solid rgba(255, 218, 233, 0.16);
+    border-radius: 22px;
+    background: rgba(255, 247, 250, 0.07);
+    backdrop-filter: blur(12px);
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.feature-card:hover,
+.card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(238, 164, 195, 0.55);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.feature-image {
+    height: 230px;
+    overflow: hidden;
+    position: relative;
+}
+
+.feature-image img,
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.feature-card:hover .feature-image img {
+    transform: scale(1.07);
+}
+
+.image-number {
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+}
+
+.feature-content,
+.card-content {
+    padding: 24px;
+}
+
+.feature-content h3,
+.card h3 {
+    color: #fff1f6;
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.feature-content p,
+.card p {
+    color: #cdb9c3;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* -------------------------
+   8. RESIZER TOOL PANEL
+------------------------- */
+
+.tool {
+    width: min(760px, calc(100% - 40px));
+    margin: 45px auto 100px;
+    padding: 42px;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.9), transparent 36%),
+        linear-gradient(145deg, #fff9fb 0%, #f8eaf0 55%, #f2dce6 100%);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 75px rgba(0, 0, 0, 0.32),
+        0 0 35px rgba(211, 119, 158, 0.12);
+
+    position: relative;
+    z-index: 2;
+}
+
+.tool h1,
+.tool h2,
+.tool h3 {
+    color: #512038;
+    font-family: "Playfair Display", serif;
+}
+
+.tool h1 {
+    font-size: clamp(32px, 5vw, 45px);
+    line-height: 1.2;
+    margin-bottom: 12px;
+}
+
+.tool h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.tool p {
+    color: #806271;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.tool .eyebrow {
+    color: #a65379;
+}
+
+/* -------------------------
+   9. UPLOAD AREA
+------------------------- */
+
+.drop,
+.drop-zone,
+.upload-area {
+    min-height: 190px;
+    margin-top: 25px;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.55);
+    border: 2px dashed #d8a9bd;
+    border-radius: 20px;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.drop:hover,
+.drop-zone:hover,
+.upload-area:hover {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: #a94d76;
+    transform: translateY(-2px);
+}
+
+.drop h3,
+.drop-zone h3 {
+    color: #652442;
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+}
+
+.drop p,
+.drop-zone p {
+    color: #967485;
+}
+
+.drop input[type="file"],
+.upload-area input[type="file"] {
+    max-width: 100%;
+    color: #6b3851;
+    font-size: 12px;
+}
+
+/* -------------------------
+   10. FORM ELEMENTS
+------------------------- */
+
+.tool form {
+    width: 100%;
+}
+
+.tool label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 9px;
+
+    color: #603047;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool input[type="text"],
+.tool input[type="number"],
+.tool input[type="email"],
+.tool select,
+.tool textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 15px;
+
+    color: #492337;
+    background: rgba(255, 255, 255, 0.82);
+
+    border: 1px solid #e7cbd7;
+    border-radius: 12px;
+    outline: none;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.tool input:focus,
+.tool select:focus,
+.tool textarea:focus {
+    border-color: #a65379;
+    box-shadow: 0 0 0 3px rgba(166, 83, 121, 0.12);
+}
+
+.tool input::placeholder,
+.tool textarea::placeholder {
+    color: #b59aa8;
+}
+
+/* -------------------------
+   11. OPTION CHIPS
+------------------------- */
+
+.chips,
+.options,
+.preset-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.chip,
+.option-chip,
+.preset-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 10px 16px;
+
+    color: #75465e;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #e7cbd7;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.chip:hover,
+.option-chip:hover,
+.preset-option:hover {
+    color: #651337;
+    border-color: #b76b8c;
+    background: white;
+}
+
+/* Selected radio / checkbox option */
+
+.tool input[type="radio"],
+.tool input[type="checkbox"] {
+    accent-color: #751b45;
+    cursor: pointer;
+}
+
+.tool input[type="radio"]:checked + label,
+.tool input[type="checkbox"]:checked + label {
+    color: #781d49;
+}
+
+/* -------------------------
+   12. RESULT / DOWNLOAD AREA
+------------------------- */
+
+.result,
+.result-card,
+.download-box {
+    margin-top: 28px;
+    padding: 25px;
+
+    color: #512038;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #e9ccd9;
+    border-radius: 20px;
+}
+
+.result img,
+.result-card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 18px auto;
+    border-radius: 15px;
+}
+
+.result h2,
+.result-card h2 {
+    color: #5c2140;
+}
+
+/* -------------------------
+   13. ARCH / DECORATIVE SECTIONS
+------------------------- */
+
+.arch {
+    overflow: hidden;
+    border-radius: 220px 220px 22px 22px;
+}
+
+.arch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* -------------------------
+   14. FOOTER
+------------------------- */
+
+footer {
+    margin-top: 60px;
+    padding: 35px 24px;
+
+    color: #c8aab9;
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 220, 235, 0.12);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+footer a {
+    color: #e8afc6;
+    text-decoration: none;
+}
+
+/* =========================================================
+   15. FLOATING BUTTERFLIES
+========================================================= */
+
+.butterfly-layer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Common butterfly appearance */
+
+.butterfly {
+    position: absolute;
+    display: block;
+
+    width: 220px;
+    height: auto;
+
+    opacity: 0.82;
+    filter:
+        drop-shadow(0 0 12px rgba(255, 167, 205, 0.65))
+        drop-shadow(0 0 30px rgba(211, 91, 151, 0.28));
+
+    transform-origin: center;
+    animation: butterflyFloat 8s ease-in-out infinite;
+}
+
+/* Butterfly positions and sizes */
+
+.butterfly-one {
+    width: 310px;
+    top: 9%;
+    left: -65px;
+    animation-delay: 0s;
+    transform: rotate(-16deg);
+}
+
+.butterfly-two {
+    width: 270px;
+    top: 16%;
+    right: -50px;
+    animation-delay: -2s;
+    transform: rotate(18deg);
+}
+
+.butterfly-three {
+    width: 220px;
+    top: 52%;
+    left: 3%;
+    animation-delay: -4s;
+    transform: rotate(12deg);
+}
+
+.butterfly-four {
+    width: 185px;
+    top: 65%;
+    right: 5%;
+    animation-delay: -1s;
+    transform: rotate(-18deg);
+}
+
+.butterfly-five {
+    width: 230px;
+    top: 78%;
+    left: 29%;
+    animation-delay: -3s;
+    transform: rotate(10deg);
+}
+
+.butterfly-six {
+    width: 175px;
+    top: 38%;
+    right: 25%;
+    animation-delay: -5s;
+    transform: rotate(-12deg);
+}
+
+@keyframes butterflyFloat {
+    0%, 100% {
+        translate: 0 0;
+    }
+    25% {
+        translate: 12px -17px;
+    }
+    50% {
+        translate: -8px -28px;
+    }
+    75% {
+        translate: 15px -10px;
+    }
+}
+
+/* Gentle wing shimmer */
+
+.butterfly::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        115deg,
+        transparent 25%,
+        rgba(255, 255, 255, 0.32) 48%,
+        transparent 65%
+    );
+    opacity: 0;
+    pointer-events: none;
+    animation: wingShimmer 5s ease-in-out infinite;
+}
+
+@keyframes wingShimmer {
+    0%, 65%, 100% {
+        opacity: 0;
+        transform: translateX(-35%);
+    }
+    78% {
+        opacity: 0.6;
+        transform: translateX(35%);
+    }
+}
+
+/* =========================================================
+   16. MAGICAL AMBIENT DECORATIONS
+========================================================= */
+
+.ambient-effects {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Glowing pink ribbons */
+
+.glow-ribbon,
+.ribbon {
+    position: absolute;
+    width: 600px;
+    height: 180px;
+    border: 1px solid rgba(232, 139, 180, 0.15);
+    border-radius: 50%;
+    filter: blur(2px);
+    transform: rotate(-25deg);
+    box-shadow:
+        0 0 25px rgba(213, 104, 154, 0.12),
+        inset 0 0 25px rgba(213, 104, 154, 0.08);
+    animation: ribbonFloat 14s ease-in-out infinite alternate;
+}
+
+.glow-ribbon:nth-child(1),
+.ribbon:nth-child(1) {
+    top: 18%;
+    left: -260px;
+}
+
+.glow-ribbon:nth-child(2),
+.ribbon:nth-child(2) {
+    right: -280px;
+    bottom: 15%;
+    animation-delay: -5s;
+}
+
+@keyframes ribbonFloat {
+    from {
+        transform: translateY(-15px) rotate(-25deg);
+    }
+    to {
+        transform: translateY(25px) rotate(-18deg);
+    }
+}
+
+/* Soft glowing orbs */
+
+.glass-orb,
+.orb {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle at 30% 25%,
+        rgba(255, 231, 242, 0.22),
+        rgba(218, 113, 159, 0.06) 48%,
+        transparent 72%
+    );
+
+    border: 1px solid rgba(255, 220, 235, 0.12);
+    box-shadow: 0 0 35px rgba(208, 91, 144, 0.10);
+
+    animation: orbFloat 11s ease-in-out infinite alternate;
+}
+
+.glass-orb:nth-child(3),
+.orb:nth-child(3) {
+    top: 35%;
+    left: 15%;
+}
+
+.glass-orb:nth-child(4),
+.orb:nth-child(4) {
+    right: 15%;
+    bottom: 25%;
+    width: 90px;
+    height: 90px;
+    animation-delay: -4s;
+}
+
+@keyframes orbFloat {
+    from {
+        transform: translateY(0) scale(0.95);
+    }
+    to {
+        transform: translateY(-30px) scale(1.08);
+    }
+}
+
+/* Tiny stars and glitter */
+
+.star,
+.glitter {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #ffe6f0;
+    box-shadow:
+        0 0 8px #ffc1db,
+        0 0 18px rgba(255, 175, 208, 0.8);
+
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.star:nth-child(5) {
+    top: 20%;
+    left: 40%;
+}
+
+.star:nth-child(6) {
+    top: 65%;
+    left: 70%;
+    animation-delay: -1s;
+}
+
+.star:nth-child(7) {
+    top: 42%;
+    left: 88%;
+    animation-delay: -2s;
+}
+
+.star:nth-child(8) {
+    top: 82%;
+    left: 18%;
+    animation-delay: -0.5s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.7);
+    }
+}
+
+/* -------------------------
+   17. SCROLLBAR
+------------------------- */
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #100810;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#9a426b, #50112f);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c16c91;
+}
+
+/* -------------------------
+   18. RESPONSIVE DESIGN
+------------------------- */
+
+@media (max-width: 900px) {
+    .cards,
+    .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .butterfly-one {
+        width: 240px;
+    }
+
+    .butterfly-two {
+        width: 220px;
+    }
+
+    .butterfly-three {
+        width: 175px;
+    }
+
+    .butterfly-four {
+        width: 155px;
+    }
+
+    .butterfly-five {
+        width: 180px;
+    }
+
+    .butterfly-six {
+        width: 145px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav {
+        width: calc(100% - 24px);
+        min-height: 65px;
+        margin-top: 12px;
+        padding: 12px 17px;
+        border-radius: 16px;
+    }
+
+    .logo,
+    .nav-logo {
+        font-size: 23px;
+        letter-spacing: 3px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a,
+    .nav a:not(.logo):not(.nav-logo) {
+        font-size: 11px;
+    }
+
+    .hero {
+        width: calc(100% - 30px);
+        min-height: 470px;
+        padding: 75px 10px;
+    }
+
+    .hero h1,
+    .hero-title {
+        font-size: clamp(42px, 12vw, 62px);
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    section {
+        width: calc(100% - 30px);
+    }
+
+    .about,
+    .how-it-works,
+    .features,
+    .philosophy {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .cards,
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .feature-image {
+        height: 210px;
+    }
+
+    .tool {
+        width: calc(100% - 24px);
+        margin: 30px auto 65px;
+        padding: 25px 19px;
+        border-radius: 23px;
+    }
+
+    .tool h1 {
+        font-size: 33px;
+    }
+
+    .drop,
+    .drop-zone,
+    .upload-area {
+        min-height: 160px;
+        padding: 20px 12px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: min(260px, 100%);
+    }
+
+    /* Keep butterflies visible without covering mobile content */
+
+    .butterfly-one {
+        width: 145px;
+        top: 12%;
+        left: -55px;
+    }
+
+    .butterfly-two {
+        width: 135px;
+        top: 20%;
+        right: -55px;
+    }
+
+    .butterfly-three {
+        width: 110px;
+        top: 55%;
+        left: -35px;
+    }
+
+    .butterfly-four {
+        width: 105px;
+        top: 68%;
+        right: -30px;
+    }
+
+    .butterfly-five {
+        width: 125px;
+        top: 84%;
+        left: 15%;
+    }
+
+    .butterfly-six {
+        width: 100px;
+        top: 42%;
+        right: 5%;
+    }
+
+    .glow-ribbon,
+    .ribbon {
+        width: 350px;
+        height: 100px;
+    }
+}
+
+/* -------------------------
+   19. ACCESSIBILITY
+------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ==========================================
+   RIVOK — MATCHING YOUR HTML ELEMENTS
+========================================== */
+
+/* Ambient decorations */
+.ambient-effects {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.light-ribbons {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+}
+
+.glass-orb {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255,255,255,.25),
+        rgba(255,160,200,.10) 45%,
+        transparent 75%);
+    border: 1px solid rgba(255,220,240,.2);
+    box-shadow: 0 0 35px rgba(255,140,190,.15);
+    animation: orbDrift 10s ease-in-out infinite alternate;
+}
+
+.orb-one { top: 18%; left: 15%; }
+.orb-two { top: 60%; right: 12%; animation-delay: -3s; }
+.orb-three { bottom: 8%; left: 45%; animation-delay: -6s; }
+
+@keyframes orbDrift {
+    to { transform: translateY(-25px) scale(1.1); }
+}
+
+/* Stars */
+.magic-star {
+    position: absolute;
+    color: #ffe5f1;
+    font-size: 24px;
+    text-shadow: 0 0 12px #ff9fc5, 0 0 25px #ff9fc5;
+    animation: magicTwinkle 3s ease-in-out infinite;
+}
+
+.star-one { top: 15%; left: 45%; }
+.star-two { top: 35%; right: 12%; animation-delay: .8s; }
+.star-three { top: 70%; left: 12%; animation-delay: 1.5s; }
+.star-four { top: 82%; right: 32%; animation-delay: 2s; }
+.star-five { top: 48%; left: 80%; animation-delay: 1.2s; }
+
+@keyframes magicTwinkle {
+    0%, 100% { opacity: .25; transform: scale(.75) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.3) rotate(25deg); }
+}
+
+/* Glitter particles */
+.glitter-particles i {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #ffe6f1;
+    box-shadow: 0 0 10px 2px rgba(255,170,210,.7);
+    animation: glitterFloat 5s ease-in-out infinite;
+}
+
+.glitter-particles i:nth-child(1) { top: 12%; left: 12%; }
+.glitter-particles i:nth-child(2) { top: 24%; left: 28%; }
+.glitter-particles i:nth-child(3) { top: 45%; left: 18%; }
+.glitter-particles i:nth-child(4) { top: 62%; left: 38%; }
+.glitter-particles i:nth-child(5) { top: 80%; left: 8%; }
+.glitter-particles i:nth-child(6) { top: 16%; left: 70%; }
+.glitter-particles i:nth-child(7) { top: 35%; left: 90%; }
+.glitter-particles i:nth-child(8) { top: 52%; left: 60%; }
+.glitter-particles i:nth-child(9) { top: 75%; left: 80%; }
+.glitter-particles i:nth-child(10) { top: 90%; left: 55%; }
+.glitter-particles i:nth-child(n+11) { top: 50%; left: 50%; }
+
+@keyframes glitterFloat {
+    0%, 100% { opacity: .15; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-18px); }
+}
+
+/* Resizer step headings */
+.tool .step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #5c2340;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.tool .num {
+    width: 29px;
+    height: 29px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    background: #762044;
+    font-size: 13px;
+}
+
+/* Upload area */
+.tool .drop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+/* Preset choices */
+.tool .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 12px 0 20px;
+}
+
+.tool .chips input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tool .chips label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    margin: 0;
+    border: 1px solid #e5c5d4;
+    border-radius: 30px;
+    background: #fffafd;
+    color: #71344f;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.tool .chips label:hover {
+    background: #f8e2ec;
+    border-color: #b66b8c;
+}
+
+.tool .chips input:checked + label {
+    background: #741d45;
+    border-color: #741d45;
+    color: white;
+    box-shadow: 0 4px 14px rgba(116,29,69,.2);
+}
+
+/* Dimension fields */
+.tool .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.tool .grid.one {
+    grid-template-columns: 1fr;
+}
+
+.tool .grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #603047;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tool .grid input {
+    width: 100%;
+}
+
+.tool .grid.is-disabled {
+    opacity: .45;
+}
+
+.tool .grid input:disabled {
+    cursor: not-allowed;
+    background: #eee5e9 !important;
+}
+
+.tool .opt {
+    font-size: 11px;
+    font-weight: 400;
+    color: #99788a;
+}
+
+.tool .hint {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #896477;
+}
+
+/* Ensure decorative layers never cover the form */
+.butterfly-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.tool {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    .tool .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================================
+   RIVOK — BIGGER, CENTERED RESIZER HEADING
+========================================== */
+
+/* Start your resize heading */
+.tool > h3 {
+    width: 100%;
+    text-align: center;
+    font-family: "Playfair Display", serif;
+    font-size: 46px !important;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: #65213f;
+}
+
+/* Center the subtitle too */
+.tool > .sub {
+    text-align: center;
+    font-size: 17px !important;
+    margin-bottom: 32px;
+}
+
+/* Upload your file step heading */
+.tool .step {
+    font-size: 19px !important;
+    font-weight: 700;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+/* Bigger numbered circle */
+.tool .num {
+    width: 34px;
+    height: 34px;
+    font-size: 16px !important;
+}
+
+/* Upload area main text */
+.tool .drop p {
+    font-size: 20px !important;
+    font-weight: 700;
+    color: #71314e;
+}
+
+/* Upload area supporting text */
+.tool .drop small {
+    font-size: 15px !important;
+    line-height: 1.6;
+    color: #896477;
+}
+
+/* Bigger upload icon */
+.tool .drop svg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .tool > h3 {
+        font-size: 34px !important;
+    }
+
+    .tool > .sub {
+        font-size: 14px !important;
+    }
+
+    .tool .step {
+        font-size: 16px !important;
+    }
+
+    .tool .drop p {
+        font-size: 17px !important;
+    }
+
+    .tool .drop small {
+        font-size: 13px !important;
+    }
+}

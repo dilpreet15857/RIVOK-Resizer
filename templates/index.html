@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RIVOK Resizer</title>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}?v=22">
+</head>
+<body>
+    
+
+<!-- RIVOK AMBIENT DECORATIONS -->
+<div class="ambient-effects" aria-hidden="true">
+
+    <!-- Flowing pink light ribbons -->
+    <svg class="light-ribbons" viewBox="0 0 1440 900"
+         preserveAspectRatio="none">
+        <defs>
+            <linearGradient id="ribbonPink">
+                <stop offset="0%" stop-color="#ff8dbb" stop-opacity="0"/>
+                <stop offset="45%" stop-color="#ffc4dc" stop-opacity=".8"/>
+                <stop offset="100%" stop-color="#ff8dbb" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="ribbonBlur">
+                <feGaussianBlur stdDeviation="5"/>
+            </filter>
+        </defs>
+
+        <path d="M-100 650 C220 470 250 100 650 150 S1100 650 1550 100"
+              stroke="url(#ribbonPink)" stroke-width="7"
+              fill="none" filter="url(#ribbonBlur)"/>
+
+        <path d="M-100 720 C240 520 350 260 700 330 S1150 750 1550 250"
+              stroke="url(#ribbonPink)" stroke-width="3"
+              fill="none"/>
+
+        <path d="M-100 180 C300 20 480 100 750 30 S1200 100 1550 -80"
+              stroke="url(#ribbonPink)" stroke-width="3.5"
+              fill="none" filter="url(#ribbonBlur)"/>
+    </svg>
+
+    <!-- Glowing glass orbs -->
+    <span class="glass-orb orb-one"></span>
+    <span class="glass-orb orb-two"></span>
+    <span class="glass-orb orb-three"></span>
+
+    <!-- Twinkling stars -->
+    <span class="magic-star star-one">✦</span>
+    <span class="magic-star star-two">✧</span>
+    <span class="magic-star star-three">✦</span>
+    <span class="magic-star star-four">✧</span>
+    <span class="magic-star star-five">✦</span>
+
+    <!-- Floating glitter particles -->
+    <div class="glitter-particles">
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+</div>
+
+<!-- RIVOK GLASS BUTTERFLIES -->
+<svg class="butterfly-definitions" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wingGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff5fb" stop-opacity=".85"/>
+      <stop offset="45%" stop-color="#ff9bc5" stop-opacity=".38"/>
+      <stop offset="100%" stop-color="#f8c9e2" stop-opacity=".12"/>
+    </linearGradient>
+
+    <linearGradient id="wingEdge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="50%" stop-color="#ffb6d5"/>
+      <stop offset="100%" stop-color="#ffedf5"/>
+    </linearGradient>
+
+    <radialGradient id="wingGlow">
+      <stop offset="0%" stop-color="#fff" stop-opacity=".8"/>
+      <stop offset="100%" stop-color="#ff9bc5" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="butterflyGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <g id="glassButterfly">
+      <!-- Upper left wing -->
+      <path d="M100 100
+        C70 35 20 5 12 42
+        C0 85 42 126 94 113Z"
+        fill="url(#wingGradient)" stroke="url(#wingEdge)" stroke-width="2.5"/>
+
+      <!-- Lower left wing -->
+      <path d="M96 108
+        C57 103 26 126 42 157
+        C58 184 91 150 103 119Z"
+        fill="url(#wingGradient)" stroke="url(#wingEdge)" stroke-width="3"/>
+
+      <!-- Upper right wing -->
+      <path d="M100 100
+        C130 35 180 5 188 42
+        C200 85 158 126 106 113Z"
+        fill="url(#wingGradient)" stroke="url(#wingEdge)" stroke-width="3.5"/>
+
+      <!-- Lower right wing -->
+      <path d="M104 108
+        C143 103 174 126 158 157
+        C142 184 109 150 97 119Z"
+        fill="url(#wingGradient)" stroke="url(#wingEdge)" stroke-width="2.5"/>
+
+      <!-- Wing veins -->
+      <g fill="none" stroke="#fff0f8" stroke-width="1.2" opacity=".85">
+        <path d="M100 110 L18 43 M100 110 L39 91 M100 110 L67 30 M100 110 L48 126"/>
+        <path d="M100 110 L182 43 M100 110 L161 91 M100 110 L133 30 M100 110 L152 126"/>
+        <path d="M96 112 L48 157 M104 112 L152 157"/>
+        <path d="M100 110 Q57 65 12 42 M100 110 Q143 65 188 42"/>
+      </g>
+
+      <!-- Decorative wing spots -->
+      <g fill="#fff7fb" opacity=".85">
+        <circle cx="42" cy="54" r="3"/>
+        <circle cx="64" cy="77" r="2"/>
+        <circle cx="50" cy="132" r="3"/>
+        <circle cx="158" cy="54" r="3"/>
+        <circle cx="136" cy="77" r="2"/>
+        <circle cx="150" cy="132" r="3"/>
+      </g>
+
+      <!-- Glowing center -->
+      <ellipse cx="100" cy="106" rx="12" ry="31"
+        fill="url(#wingGlow)"/>
+
+      <!-- Butterfly body -->
+      <path d="M100 78 C92 94 93 126 100 143
+               C107 126 108 94 100 78Z"
+        fill="#ffe4f0" stroke="#fff" stroke-width="1.5"/>
+
+      <!-- Antennae -->
+      <g fill="none" stroke="#ffe5f0" stroke-width="2" stroke-linecap="round">
+        <path d="M97 83 Q79 54 67 55"/>
+        <path d="M103 83 Q121 54 133 55"/>
+      </g>
+
+      <!-- Glowing wing highlights -->
+      <g fill="none" stroke="#fff" stroke-width="1.5" opacity=".8">
+        <path d="M22 42 Q46 18 72 54"/>
+        <path d="M178 42 Q154 18 128 54"/>
+        <path d="M45 145 Q66 166 88 124"/>
+        <path d="M155 145 Q134 166 112 124"/>
+      </g>
+
+      <!-- Sparkle points -->
+      <g fill="#fff">
+        <circle cx="24" cy="43" r="2.5"/>
+        <circle cx="176" cy="43" r="2.5"/>
+        <circle cx="100" cy="91" r="3"/>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+
+<div class="butterfly-layer" aria-hidden="true">
+
+    <svg class="butterfly butterfly-one" viewBox="0 0 200 190">
+        <use href="#glassButterfly"/>
+    </svg>
+
+    <svg class="butterfly butterfly-two" viewBox="0 0 200 190">
+        <use href="#glassButterfly"/>
+    </svg>
+
+    <svg class="butterfly butterfly-three" viewBox="0 0 200 190">
+        <use href="#glassButterfly"/>
+    </svg>
+
+    <svg class="butterfly butterfly-four" viewBox="0 0 200 190">
+        <use href="#glassButterfly"/>
+    </svg>
+
+    <!-- Two additional butterflies -->
+    <svg class="butterfly butterfly-five" viewBox="0 0 200 190">
+        <use href="#glassButterfly"/>
+    </svg>
+
+    <svg class="butterfly butterfly-six" viewBox="0 0 200 190">
+        <use href="#glassButterfly"/>
+    </svg>
+
+</div>
+
+
+
+    <!-- NAV, HERO, CARDS, ABOUT and HOW sections go here -->
+
+    <!-- RESIZER TOOL -->
+    <section class="tool" id="tool">
+
+        <h3>Start your <em>resize</em></h3>
+        <p class="sub">Upload once, pick a size, download it ready to post.</p>
+
+        <form action="/resize" method="post" enctype="multipart/form-data">
+
+            <!-- STEP 1: UPLOAD -->
+            <div class="step">
+                <span class="num">1</span> Upload your file
+            </div>
+
+            <label class="drop">
+
+                <svg width="42" height="42" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor"
+                     stroke-width="1.6" stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="M12 16V4M12 4l-4 4M12 4l4 4"/>
+                    <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>
+
+                </svg>
+
+                <p>Choose an <strong>image</strong> or <strong>video</strong></p>
+
+                <small>
+                    JPG, PNG, WebP, MP4, MOV and more · up to 500 MB
+                </small>
+
+                <input type="file" name="file"
+                       accept="image/*,video/*" required>
+
+            </label>
+
+            <!-- STEP 2: PICK A SIZE -->
+            <div class="step">
+                <span class="num">2</span> Pick a size
+            </div>
+
+            <div class="chips">
+
+                <input type="radio" name="preset" id="p0"
+                       value="custom" checked>
+                <label for="p0">Custom</label>
+
+                <input type="radio" name="preset" id="p1"
+                       value="1080x1920">
+                <label for="p1">Reels 9:16</label>
+
+                <input type="radio" name="preset" id="p2"
+                       value="1080x1080">
+                <label for="p2">Square 1:1</label>
+
+                <input type="radio" name="preset" id="p3"
+                       value="1920x1080">
+                <label for="p3">YouTube 16:9</label>
+
+                <input type="radio" name="preset" id="p4"
+                       value="1280x720">
+                <label for="p4">720p</label>
+
+            </div>
+
+            <!-- CUSTOM DIMENSIONS -->
+            <div class="grid" id="customDimensions">
+
+                <label>
+                    Width (px)
+                    <input type="number" name="width"
+                           min="16" placeholder="1080">
+                </label>
+
+                <label>
+                    Height (px)
+                    <input type="number" name="height"
+                           min="16" placeholder="1920">
+                </label>
+
+            </div>
+
+            <p class="hint" id="dimensionHint">
+                Enter your preferred width and height for a custom resize.
+            </p>
+
+            <!-- STEP 3: FINE-TUNE -->
+            <div class="step">
+                <span class="num">3</span> Fine-tune
+            </div>
+
+            <div class="chips">
+
+                <input type="radio" name="fit" id="f1"
+                       value="cover" checked>
+                <label for="f1">Cover · crop</label>
+
+                <input type="radio" name="fit" id="f2"
+                       value="contain">
+                <label for="f2">Contain · padding</label>
+
+                <input type="radio" name="fit" id="f3"
+                       value="fill">
+                <label for="f3">Stretch</label>
+
+            </div>
+
+            <!-- MAX FILE SIZE -->
+            <div class="grid one">
+
+                <label>
+                    Max file size (MB)
+                    <span class="opt">optional</span>
+
+                    <input type="number" name="maxSize"
+                           min="0.05" step="0.05"
+                           placeholder="e.g. 2">
+                </label>
+
+            </div>
+
+            <button type="submit" class="btn-dark big">
+                Resize now →
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const presetOptions = document.querySelectorAll(
+                'input[name="preset"]'
+            );
+
+            const widthInput = document.querySelector(
+                'input[name="width"]'
+            );
+
+            const heightInput = document.querySelector(
+                'input[name="height"]'
+            );
+
+            const dimensionGroup = document.getElementById(
+                "customDimensions"
+            );
+
+            const dimensionHint = document.getElementById(
+                "dimensionHint"
+            );
+
+            function updateCustomDimensions() {
+
+                const selectedPreset = document.querySelector(
+                    'input[name="preset"]:checked'
+                );
+
+                const isCustom = selectedPreset &&
+                                 selectedPreset.value === "custom";
+
+                widthInput.disabled = !isCustom;
+                heightInput.disabled = !isCustom;
+
+                if (!isCustom) {
+                    widthInput.value = "";
+                    heightInput.value = "";
+                }
+
+                dimensionGroup.classList.toggle(
+                    "is-disabled", !isCustom
+                );
+
+                dimensionHint.textContent = isCustom
+                    ? "Enter your preferred width and height for a custom resize."
+                    : "Dimensions are automatically selected according to your chosen preset.";
+            }
+
+            presetOptions.forEach(function (option) {
+                option.addEventListener(
+                    "change", updateCustomDimensions
+                );
+            });
+
+            updateCustomDimensions();
+
+        });
+    </script>
+
+</body>
+</html>
+
