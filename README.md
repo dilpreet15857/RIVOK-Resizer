@@ -127,7 +127,8 @@ RIVOK is deployed using Render.
 
 ## 📸 Screenshots
 
-Screenshots of the application can be added here to showcase its interface and functionality.
+![Uploading image.png…]()
+
 
 ## 🎯 Project Objective
 
