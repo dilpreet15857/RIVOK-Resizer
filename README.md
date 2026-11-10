@@ -1,6 +1,6 @@
 <img width="1907" height="900" alt="image" src="https://github.com/user-attachments/assets/faf81412-b3ae-4b54-8d7b-323e6098ab80" /># RIVOK-Resizer
 An image and video resizing web application built with Flask.
-# 🦋 RIVOK — Luxury Image & Video Resizer
+# 🦋 RIVOK — Image & Video Resizer
 
 <p align="center">
   <strong>Resize your images and videos with elegance.</strong>
