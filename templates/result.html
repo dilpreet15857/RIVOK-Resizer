@@ -1,31 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Result · RIVOK Resizer</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Result · RIVOK Resizer</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-  <section class="tool" style="margin-top:60px">
+
+<section class="tool" style="margin-top:60px">
+
     {% if error %}
-      <h3>Something went <em>wrong</em></h3>
-      <p id="status">{{ error }}</p>
+
+        <h3>Something went <em>wrong</em></h3>
+        <p id="status">{{ error }}</p>
+
     {% else %}
-      <h3>Your file is <em>ready</em></h3>
-      <p id="status">Output size: {{ size }} MB</p>
-      <div id="result">
-        {% if kind == 'video' %}
-          <video src="/outputs/{{ name }}" controls></video>
-        {% else %}
-          <img src="/outputs/{{ name }}" alt="result" />
-        {% endif %}
-        <br />
-        <a class="btn-dark" href="/outputs/{{ name }}?dl=1">DOWNLOAD</a>
-      </div>
+
+        <h3>Your file is <em>ready</em></h3>
+
+        <p id="status">
+            Output size: {{ output_size }} MB
+        </p>
+
+        <div id="result">
+
+            {% if kind == 'video' %}
+
+                <video
+                    src="{{ url_for('download_file', filename=output_name) }}"
+                    controls
+                    style="max-width:100%;">
+                </video>
+
+            {% else %}
+
+                <img
+                    src="{{ url_for('download_file', filename=output_name) }}"
+                    alt="Resized image"
+                    style="max-width:100%; height:auto;">
+                    
+            {% endif %}
+
+            <br><br>
+
+            <a class="btn-dark"
+               href="{{ url_for('download_file', filename=output_name) }}?dl=1">
+                DOWNLOAD
+            </a>
+
+        </div>
+
     {% endif %}
-    <p style="text-align:center;margin-top:20px"><a href="/#tool"><u>← Resize another</u></a></p>
-  </section>
+
+    <p style="text-align:center; margin-top:20px">
+        <a href="/#tool"><u>← Resize another</u></a>
+    </p>
+
+</section>
+
 </body>
 </html>

@@ -83,6 +83,8 @@ def resize_image(src, dst, width, height, fit, max_kb=None):
 
         quality -= 10
 
+    
+def get_duration(path):
     process = subprocess.run(
         [FFMPEG, "-i", path],
         capture_output=True,
@@ -99,8 +101,18 @@ def resize_image(src, dst, width, height, fit, max_kb=None):
         return 1.0
 
     hours, minutes, seconds = match.groups()
-    duration = int(hours) * 3600 + int(minutes) * 60 + float(seconds)
+
+    duration = (
+        int(hours) * 3600
+        + int(minutes) * 60
+        + float(seconds)
+    )
+
     return max(duration, 1.0)
+
+
+def make_even(value):
+    return value if value % 2 == 0 else value - 1
 
 
 def video_filter(width, height, fit):
@@ -354,7 +366,7 @@ def download_file(filename):
     return send_from_directory(
         OUTPUTS,
         filename,
-        as_attachment=True
+        as_attachment=(request.args.get("dl") == "1")
     )
 
 
